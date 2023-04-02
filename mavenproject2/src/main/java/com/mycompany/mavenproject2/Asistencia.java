@@ -1,4 +1,3 @@
-
 package com.mycompany.mavenproject2;
 
 import java.util.HashMap;
@@ -147,26 +146,26 @@ public class Asistencia {
        }
     }
     
-    public void mostrarAsistencia(HashMap Hashmapita){
+    public void mostrarAsitencia(HashMap Hashmapita){
         for(Object objeto : Hashmapita.values()) {
             Alumno alumno = (Alumno) objeto;
-            System.out.println("Nombre: " + alumno.getNombre()+", RUT: "+ alumno.getRut());
+            System.out.println("Nombre: " + alumno.getNombre());
             Asistencia[] asist = alumno.getArre();
             for (int i = 0; i < alumno.getUlt(); i++) {
                 System.out.println("Fecha: " + asist[i].getFecha());
                 if (asist[i].getAusencia_justificada() == 1)
-                    System.out.println("Ausencia justificada.");
+                    System.out.println("Ausencia justificada");
                 if (asist[i].getAusente() == 1)
-                    System.out.println("Ausente.");
+                    System.out.println("Ausente");
                 if (asist[i].getRetiro_anticipado() == 1)
-                    System.out.println("Retiro anticipado y presente.");
+                    System.out.println("Retiro anticipado y presente");
                 if (asist[i].getPresente() == 1 && asist[i].getRetiro_anticipado() != 1)
-                    System.out.println("Presente.");
+                    System.out.println("Presente");
             }
         }   
     }
     
-    public void pasarAsistencia (HashMap Hashmapita, LocalDate fecha){
+    public void mostrarAsistencia(HashMap Hashmapita, LocalDate fecha){
         for(Object objeto : Hashmapita.values()) {
             Alumno alumno = (Alumno) objeto;
             System.out.println("Nombre: " + alumno.getNombre()+", RUT: "+ alumno.getRut());
