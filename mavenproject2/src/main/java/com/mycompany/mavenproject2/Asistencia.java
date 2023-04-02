@@ -166,6 +166,13 @@ public class Asistencia {
         }   
     }
     
-    
+    public void pasarAsistencia (HashMap Hashmapita, LocalDate fecha){
+        for(Object objeto : Hashmapita.values()) {
+            Alumno alumno = (Alumno) objeto;
+            System.out.println("Nombre: " + alumno.getNombre()+", RUT: "+ alumno.getRut());
+            Asistencia asist = new Asistencia(0,0,0,0, fecha );
+            asist.agregarAsistencia(alumno.getRut(), fecha, asist, Hashmapita);
+          }  
+    }
 }
 

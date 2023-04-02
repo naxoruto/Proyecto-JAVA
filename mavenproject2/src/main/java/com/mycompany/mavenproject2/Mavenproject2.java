@@ -8,7 +8,6 @@ public class Mavenproject2 {
 
     public static void main(String[] args)throws Exception {
         int opcion = -1;
-        //String st;
         LocalDate myObj = LocalDate.now();
         HashMap<Integer, Alumno> Hashmapita = new HashMap<>();
         Asistencia asist = new Asistencia(0,0,0,0,myObj);
@@ -18,17 +17,24 @@ public class Mavenproject2 {
         BaseDatos auxiliar = new BaseDatos();
         auxiliar.EnvasarDatos(Hashmapita);
         
-        while (opcion != 3){
-            System.out.print("Que desea hacer? 1) agregar asistencia 2) mostrar asistencia: 3) cancelar: ");
+        while (opcion != 4){
+            System.out.print("Que desea hacer? 1) agregar asistencia 2) mostrar asistencia 3) Pasar asistencia 4) cancelar: ");
             opcion = lector.nextInt();
-            if (opcion == 1){
-                System.out.print("Ingrese rut: ");
-                opcion = lector.nextInt();
-                asist = new Asistencia(0,0,0,0,myObj);
-                asist.agregarAsistencia(opcion, myObj, asist, Hashmapita);
-            }
-            else if (opcion == 2){
-                asist.mostrarAsistencia(Hashmapita);
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingrese rut: ");
+                    opcion = lector.nextInt();
+                    asist = new Asistencia(0,0,0,0,myObj);
+                    asist.agregarAsistencia(opcion, myObj, asist, Hashmapita);
+                    break;
+                case 2:
+                    asist.mostrarAsistencia(Hashmapita);
+                    break;
+                case 3:
+                    asist.pasarAsistencia(Hashmapita, myObj);
+                    break;
+                default:
+                    break;
             }
         }
     }
