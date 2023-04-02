@@ -7,8 +7,8 @@ public class Alumno {
     private String nombre;
     private int rut;
 
-    public Asistencia Arre[] = new Asistencia[193];
-    public int ult; // el ultimo valor agregado
+    private Asistencia Arre[] = new Asistencia[193];
+    private int ult; // el ultimo valor agregado
 
     public Alumno(String nombre, int rut,Asistencia Arre[], int ult) {
         this.nombre = nombre;
