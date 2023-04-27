@@ -12,8 +12,6 @@ public class Colegio {
     public Colegio() {
         alumnos = new HashMap();
     }
-    
-
 
     public HashMap<Integer, Alumno> getalumnos() {
         return alumnos;
@@ -45,7 +43,13 @@ public class Colegio {
     }
     
     
-    
+    public boolean eliminarAlumno(int rut){
+        if (alumnos.containsKey(rut)){
+            alumnos.remove(rut);
+            return true;
+        }
+        return false;
+    }
 
 }
 

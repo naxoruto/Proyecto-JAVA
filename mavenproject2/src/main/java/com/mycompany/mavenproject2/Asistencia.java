@@ -8,7 +8,7 @@ public class Asistencia {
     private boolean ausente;
     private boolean retiro_anticipado;
     private boolean ausencia_justificada;
-    private LocalDate fecha;
+    private LocalDate fecha; // AAMMDD
 
     public Asistencia(boolean presente, boolean ausente, boolean retiro_anticipado, boolean ausencia_justificada, LocalDate fecha) {
         this.presente = presente;
@@ -17,6 +17,7 @@ public class Asistencia {
         this.ausencia_justificada = ausencia_justificada;
         this.fecha = fecha;
     }
+
 
     public boolean isPresente() {
         return presente;
@@ -59,7 +60,37 @@ public class Asistencia {
     }
     
     
-  
+    public boolean modificarAsistencia(Alumno alumno,LocalDate fecha,int op){
+        Asistencia asist[] = alumno.getAsistencias();
+        for (int i = 0; i < asist.length; i++){
+            if (fecha == asist[i].getFecha()){
+                if (op == 1){
+                    asist[i].setPresente(true);
+                    asist[i].setAusente(false);
+                    asist[i].setAusencia_justificada(false);
+                }
+                if (op == 2){
+                    asist[i].setPresente(false);
+                    asist[i].setAusente(true);
+                    asist[i].setRetiro_anticipado(false);
+                }
+                if (op == 3){
+                    asist[i].setRetiro_anticipado(true);
+                    asist[i].setPresente(true);
+                    asist[i].setAusente(false);
+                    asist[i].setAusencia_justificada(false);
+                }
+                if (op == 4){
+                    asist[i].setAusencia_justificada(true);
+                    asist[i].setAusente(true);
+                    asist[i].setPresente(false);
+                    asist[i].setRetiro_anticipado(false);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
 

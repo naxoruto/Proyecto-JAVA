@@ -11,10 +11,11 @@ public class Alumno {
     private Asistencia asistencias[] = new Asistencia[193];
     private int ult; // el ultimo valor agregado
 
-    public Alumno(String nombre, int rut, int ult) {
+    public Alumno(String nombre, int rut, int ult, Asistencia asistencias[]) {
         this.nombre = nombre;
         this.rut = rut;
         this.ult = ult;
+        this.asistencias = asistencias;
     }
 
     
@@ -49,7 +50,25 @@ public class Alumno {
     public void setUlt(int ult) {
         this.ult = ult;
     }
-
+    
+    public double porcentajeInasistencia(Alumno alumno){
+        Asistencia[] asist= alumno.getAsistencias();
+        double porcentaje;
+        int inasistencias = 0;
+        int total = 0;
+        for (int i = 0; i < asist.length; i++){
+            if (asist[i].isPresente() == true)
+                total++;
+            if (asist[i].isPresente() == false){
+                total++;
+                inasistencias++;
+            }
+        }
+        if (total == 0 || inasistencias == 0)
+            return 0;
+        porcentaje = (inasistencias * 100) / total;
+        return porcentaje;
+    }
     
     }
     
