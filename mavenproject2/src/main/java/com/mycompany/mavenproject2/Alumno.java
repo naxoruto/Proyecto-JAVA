@@ -4,17 +4,17 @@ package com.mycompany.mavenproject2;
 
 
 
+
+
 public class Alumno {
     private String nombre;
     private int rut;
     
     private Asistencia asistencias[] = new Asistencia[193];
-    private int ult; // el ultimo valor agregado
 
-    public Alumno(String nombre, int rut, int ult, Asistencia asistencias[]) {
+    public Alumno(String nombre, int rut, Asistencia asistencias[]) {
         this.nombre = nombre;
         this.rut = rut;
-        this.ult = ult;
         this.asistencias = asistencias;
     }
 
@@ -43,20 +43,26 @@ public class Alumno {
         this.asistencias = asistencias;
     }
 
-    public int getUlt() {
-        return ult;
-    }
 
-    public void setUlt(int ult) {
-        this.ult = ult;
+    /*
+    Este método calcula el porcentaje de asistencia del alumno. 
+El método acepta un objeto de la clase "Alumno" como argumento
+y devuelve un valor booleano que indica si el porcentaje de asistencia 
+es menor al 30%.
+*/
+  public boolean alumnoRepro(Alumno alumno){      
+        if(alumno.porcentajeInasistencia(alumno) > 30)
+            return true;
+        return false;
     }
-    
-    public double porcentajeInasistencia(Alumno alumno){
+  public double porcentajeInasistencia(Alumno alumno){
         Asistencia[] asist= alumno.getAsistencias();
         double porcentaje;
-        int inasistencias = 0;
-        int total = 0;
+        double inasistencias = 0;
+        double total = 0;
         for (int i = 0; i < asist.length; i++){
+            if (asist[i] == null)
+                break;
             if (asist[i].isPresente() == true)
                 total++;
             if (asist[i].isPresente() == false){
@@ -70,6 +76,11 @@ public class Alumno {
         return porcentaje;
     }
     
-    }
     
+}
+    
+    
+    
+    
+
     

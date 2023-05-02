@@ -1,13 +1,11 @@
 
 package com.mycompany.mavenproject2;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 
 
 public class Colegio {
     private HashMap<Integer, Alumno> alumnos;
-    private LocalDate myObj = LocalDate.now();
 
     public Colegio() {
         alumnos = new HashMap();
@@ -19,14 +17,6 @@ public class Colegio {
 
     public void setHashmapita(HashMap<Integer, Alumno> alumnos) {
         this.alumnos = alumnos;
-    }
-
-    public LocalDate getMyObj() {
-        return myObj;
-    }
-
-    public void setMyObj(LocalDate myObj) {
-        this.myObj = myObj;
     }
 
     public boolean agregarAlumno(Alumno nuevo){

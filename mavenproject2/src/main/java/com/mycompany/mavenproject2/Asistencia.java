@@ -8,7 +8,7 @@ public class Asistencia {
     private boolean ausente;
     private boolean retiro_anticipado;
     private boolean ausencia_justificada;
-    private LocalDate fecha; // AAMMDD
+    private LocalDate fecha = null; // AAMMDD
 
     public Asistencia(boolean presente, boolean ausente, boolean retiro_anticipado, boolean ausencia_justificada, LocalDate fecha) {
         this.presente = presente;
@@ -60,29 +60,31 @@ public class Asistencia {
     }
     
     
-    public boolean modificarAsistencia(Alumno alumno,LocalDate fecha,int op){
+    public boolean modificarAsistencia(Alumno alumno,LocalDate fecha,String op){
         Asistencia asist[] = alumno.getAsistencias();
         for (int i = 0; i < asist.length; i++){
-            if (fecha == asist[i].getFecha()){
-                if (op == 1){
+            if (asist[i] == null)
+                break;
+            if (fecha.equals(asist[i].getFecha())){
+                if (op.equals("Presente")){
                     asist[i].setPresente(true);
                     asist[i].setAusente(false);
                     asist[i].setAusencia_justificada(false);
                 }
-                if (op == 2){
+                if (op.equals("Ausente")){
                     asist[i].setPresente(false);
                     asist[i].setAusente(true);
                     asist[i].setRetiro_anticipado(false);
                 }
-                if (op == 3){
+                if (op.equals("Retiro Anticipado")){
                     asist[i].setRetiro_anticipado(true);
-                    asist[i].setPresente(true);
+                    asist[i].setPresente(false);
                     asist[i].setAusente(false);
                     asist[i].setAusencia_justificada(false);
                 }
-                if (op == 4){
+                if (op.equals("Ausencia Justificada")){
                     asist[i].setAusencia_justificada(true);
-                    asist[i].setAusente(true);
+                    asist[i].setAusente(false);
                     asist[i].setPresente(false);
                     asist[i].setRetiro_anticipado(false);
                 }
